@@ -1,0 +1,14 @@
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDizxBF7m-OJ31K91TXGKG5ZKgVHpaic6U&callback=initMap">
+</script>
+<h1>college search</h1>
+  <%= hidden_field_tag 'api_key', 'Qc04x6P8fyBCnTrtrVk8CUBpIBHmKHlOP5B4QKYV'  %>
+  college <%= text_field_tag 'school.name', @search_term, placeholder: "Search college" %>
+  <%= hidden_field_tag 'fields', 'id,school.name,2013.student.size,location'  %>
+  <button id='submit' onclick="submitFrom();"> submit </button>
+<table id='school-list' >
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Location</th>
+    </tr>
+</table>

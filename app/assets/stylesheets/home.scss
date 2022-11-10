@@ -1,0 +1,24 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+table {
+    width: 50%;
+}
+
+th {
+    background: #f1f1f1;
+    font-weight: bold;
+    padding: 6px;
+}
+
+td {
+    background: #f9f9f9;
+    padding: 6px;
+}
+
+.map {
+    height: 500px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+}
