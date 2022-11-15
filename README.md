@@ -15,6 +15,9 @@ Things you may want to cover:
 
 * Database creation -  not needed
 
+* Run bundle install 
+* Run rails server
+
 * sample college name to search: 
       "Alabama A & M University"
       "University of Alabama at Birmingham"
