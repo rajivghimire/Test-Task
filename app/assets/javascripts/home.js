@@ -5,29 +5,36 @@ function submitFrom() {
         type: 'GET',
         url: 'https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=' + api_key,
         dataType: 'json',
-        data: "school.name=" + school_name + "&fields=id,school.name,location",
+        data: "school.name=" + school_name + "&fields=id,school.name,location,school.city,school.state",
         success: function(data) {
-
-            for (var i = 0; i < data.results.length; i++) {
-                const location_coordinates = { lat: data.results[i]['location.lat'], lng: data.results[i]['location.lon'] };
-                const school_id = 'map-' + data.results[i]['id']
-                console.log(location_coordinates)
-                var row = $('<tr><td>' + data.results[i]['id'] + '</td><td>' + data.results[i]['school.name'] + '</td><td class="map" id="' + school_id + '">' + '</td></tr>');
-                $('#school-list').append(row);
-                loadMap(location_coordinates, school_id);
-            }
+            loadFullMap(data.results);
         },
         error: function(response) {}
     })
 }
 
-function loadMap(location_coordinates, school_id) {
-    const map = new google.maps.Map(document.getElementById(school_id), {
-        zoom: 14,
-        center: location_coordinates
+function loadFullMap(locations) {
+
+    var map = new google.maps.Map(document.getElementById('full-map'), {
+        zoom: 4,
+        center: new google.maps.LatLng(locations[0]['location.lat'], locations[0]['location.lon'])
     });
-    const marker = new google.maps.Marker({
-        position: location_coordinates,
-        map: map,
-    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i]['location.lat'], locations[i]['location.lon']),
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations[i]['school.name']);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
 }

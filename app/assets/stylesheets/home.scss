@@ -1,24 +1,26 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-table {
-    width: 50%;
+.input {
+    width: 30em;
+    height: 2em;
 }
 
-th {
-    background: #f1f1f1;
-    font-weight: bold;
-    padding: 6px;
-}
-
-td {
-    background: #f9f9f9;
-    padding: 6px;
+#submit {
+    width: 150px;
+    height: 35px;
+    background: dodgerblue;
+    border-radius: 6px;
+    transition: all .3s cubic-bezier(0.67, 0.17, 0.40, 0.83);
+    color: whitesmoke;
+    font-size: 18px;
 }
 
 .map {
-    height: 500px;
-    /* The height is 400 pixels */
-    width: 100%;
+    margin-top: 1em;
+    /* The height is 800 pixels */
+    height: 800px;
     /* The width is the width of the web page */
+    width: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
